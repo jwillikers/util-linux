@@ -825,7 +825,7 @@ have_so_passcred = cc.has_header_symbol(
   prefix : '#include <sys/types.h>',
   required : build_plymouth_support.enabled())
 
-build_plymouth_support = (not build_plymouth_support.disabled() and 
+build_plymouth_support = (not build_plymouth_support.disabled() and
                           have_tiocglcktrmios and
                           have_sock_cloexec and
                           have_sock_nonblock and
@@ -3967,6 +3967,9 @@ if asciidoctor.found()
       'man' + target_section / target,
       mandir / 'man' + link_section / link_name)
   endforeach
+
+  subdir('man-common')
+  subdir('po-man')
 endif
 
 if bash_completion.found()
